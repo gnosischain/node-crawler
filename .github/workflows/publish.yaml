@@ -44,6 +44,7 @@ jobs:
           tags: gnosischain/node-crawler:latest, gnosischain/node-crawler:${{ steps.commit.outputs.short }}
           platforms: |
             linux/amd64
+            linux/arm64
           build-args: |
             GIT_COMMIT=${{ steps.commit.outputs.short }}
 
@@ -56,6 +57,7 @@ jobs:
           tags: gnosischain/node-crawler-frontend:latest, gnosischain/node-crawler-frontend:${{ steps.commit.outputs.short }}
           platforms: |
             linux/amd64
+            linux/arm64
           build-args: |
             GIT_COMMIT=${{ steps.commit.outputs.short }}
 
