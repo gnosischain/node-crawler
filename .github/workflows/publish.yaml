@@ -50,8 +50,8 @@ jobs:
       - name: Build & Push Frontend Docker image
         uses: docker/build-push-action@v3
         with:
-          context: .
-          file: ./frontend/Dockerfile
+          context: ./frontend
+          file: ./Dockerfile
           push: true
           tags: gnosischain/node-crawler-frontend:latest, gnosischain/node-crawler-frontend:${{ steps.commit.outputs.short }}
           platforms: |
