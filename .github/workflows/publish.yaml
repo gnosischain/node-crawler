@@ -35,13 +35,25 @@ jobs:
       - id: commit
         uses: pr-mpt/actions-commit-hash@v2
       
-      - name: Build & Push Docker image
+      - name: Build & Push Crawler and API Docker image
         uses: docker/build-push-action@v3
         with:
           context: .
           file: ./Dockerfile
           push: true
           tags: gnosischain/node-crawler:latest, gnosischain/node-crawler:${{ steps.commit.outputs.short }}
+          platforms: |
+            linux/amd64
+          build-args: |
+            GIT_COMMIT=${{ steps.commit.outputs.short }}
+
+      - name: Build & Push Frontend Docker image
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: ./frontend/Dockerfile
+          push: true
+          tags: gnosischain/node-crawler-frontend:latest, gnosischain/node-crawler-frontend:${{ steps.commit.outputs.short }}
           platforms: |
             linux/amd64
           build-args: |
